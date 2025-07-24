@@ -1,0 +1,62 @@
+[
+  {
+    "Id": 1,
+    "name": "Sarah Johnson",
+    "email": "sarah.johnson@techcorp.com",
+    "phone": "+1 (555) 123-4567",
+    "company": "TechCorp Solutions",
+    "notes": "Interested in our enterprise package. Follow up next week regarding pricing and implementation timeline.",
+    "createdAt": "2024-01-15T10:30:00Z",
+    "updatedAt": "2024-01-20T14:45:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "Michael Chen",
+    "email": "m.chen@innovate.io",
+    "phone": "+1 (555) 234-5678",
+    "company": "Innovate Digital",
+    "notes": "Decision maker for software purchases. Prefers email communication over phone calls.",
+    "createdAt": "2024-01-18T09:15:00Z",
+    "updatedAt": "2024-01-22T11:30:00Z"
+  },
+  {
+    "Id": 3,
+    "name": "Emily Rodriguez",
+    "email": "emily.r@startupventure.com",
+    "phone": "+1 (555) 345-6789",
+    "company": "StartupVenture Inc",
+    "notes": "Looking for cost-effective solutions for their growing team. Budget conscious but quality focused.",
+    "createdAt": "2024-01-20T16:20:00Z",
+    "updatedAt": "2024-01-25T13:10:00Z"
+  },
+  {
+    "Id": 4,
+    "name": "David Thompson",
+    "email": "david.thompson@globaltech.com",
+    "phone": "+1 (555) 456-7890",
+    "company": "GlobalTech Industries",
+    "notes": "Senior VP of Operations. Interested in scalable solutions for multiple office locations.",
+    "createdAt": "2024-01-22T11:45:00Z",
+    "updatedAt": "2024-01-26T15:20:00Z"
+  },
+  {
+    "Id": 5,
+    "name": "Lisa Wang",
+    "email": "lisa.wang@creativestudio.com",
+    "phone": "+1 (555) 567-8901",
+    "company": "Creative Studio Co",
+    "notes": "Creative director looking for design-focused tools. Values aesthetics and user experience highly.",
+    "createdAt": "2024-01-25T14:30:00Z",
+    "updatedAt": "2024-01-28T10:15:00Z"
+  },
+  {
+    "Id": 6,
+    "name": "Robert Martinez",
+    "email": "robert.martinez@consulting.pro",
+    "phone": "+1 (555) 678-9012",
+    "company": "Martinez Consulting",
+    "notes": "Independent consultant who needs flexible licensing options. Interested in white-label solutions.",
+    "createdAt": "2024-01-28T08:00:00Z",
+    "updatedAt": "2024-01-30T12:45:00Z"
+  }
+]
