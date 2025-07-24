@@ -28,9 +28,10 @@ class ContactService {
       contact.Id > max ? contact.Id : max, 0
     );
     
-    const newContact = {
+const newContact = {
       Id: maxId + 1,
       ...contactData,
+      companyId: contactData.companyId || null,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     };
@@ -47,10 +48,11 @@ class ContactService {
       throw new Error("Contact not found");
     }
     
-    const updatedContact = {
+const updatedContact = {
       ...this.contacts[index],
       ...contactData,
       Id: parseInt(id),
+      companyId: contactData.companyId || null,
       updatedAt: new Date().toISOString()
     };
     

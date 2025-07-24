@@ -1,0 +1,74 @@
+[
+  {
+    "Id": 1,
+    "name": "TechCorp Solutions",
+    "industry": "Technology",
+    "website": "https://techcorp.com",
+    "phone": "+1 (555) 123-0000",
+    "email": "info@techcorp.com",
+    "address": "123 Tech Plaza, San Francisco, CA 94105",
+    "description": "Leading provider of enterprise software solutions specializing in cloud infrastructure and data analytics.",
+    "createdAt": "2024-01-10T09:00:00Z",
+    "updatedAt": "2024-01-15T14:30:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "Innovate Digital",
+    "industry": "Digital Marketing",
+    "website": "https://innovatedigital.io",
+    "phone": "+1 (555) 234-0000",
+    "email": "hello@innovatedigital.io",
+    "address": "456 Innovation Ave, Austin, TX 78701",
+    "description": "Full-service digital marketing agency helping businesses grow through strategic online campaigns and creative solutions.",
+    "createdAt": "2024-01-12T11:15:00Z",
+    "updatedAt": "2024-01-18T16:45:00Z"
+  },
+  {
+    "Id": 3,
+    "name": "StartupVenture Inc",
+    "industry": "Venture Capital",
+    "website": "https://startupventure.com",
+    "phone": "+1 (555) 345-0000",
+    "email": "contact@startupventure.com",
+    "address": "789 Startup Blvd, New York, NY 10001",
+    "description": "Early-stage venture capital firm focused on investing in innovative technology startups with high growth potential.",
+    "createdAt": "2024-01-14T13:20:00Z",
+    "updatedAt": "2024-01-20T10:15:00Z"
+  },
+  {
+    "Id": 4,
+    "name": "GlobalTech Industries",
+    "industry": "Manufacturing",
+    "website": "https://globaltech.com",
+    "phone": "+1 (555) 456-0000",
+    "email": "info@globaltech.com",
+    "address": "321 Industrial Park, Detroit, MI 48201",
+    "description": "International manufacturing company specializing in advanced machinery and automation solutions for various industries.",
+    "createdAt": "2024-01-16T08:30:00Z",
+    "updatedAt": "2024-01-22T12:00:00Z"
+  },
+  {
+    "Id": 5,
+    "name": "Creative Studio Co",
+    "industry": "Design & Creative",
+    "website": "https://creativestudio.com",
+    "phone": "+1 (555) 567-0000",
+    "email": "studio@creativestudio.com",
+    "address": "654 Creative Lane, Los Angeles, CA 90210",
+    "description": "Award-winning creative studio providing branding, design, and visual communication services for global brands.",
+    "createdAt": "2024-01-18T15:45:00Z",
+    "updatedAt": "2024-01-25T09:30:00Z"
+  },
+  {
+    "Id": 6,
+    "name": "Martinez Consulting",
+    "industry": "Business Consulting",
+    "website": "https://martinezconsulting.pro",
+    "phone": "+1 (555) 678-0000",
+    "email": "robert@martinezconsulting.pro",
+    "address": "987 Business Center, Chicago, IL 60601",
+    "description": "Strategic business consulting firm helping organizations optimize operations, improve efficiency, and drive growth.",
+    "createdAt": "2024-01-20T10:00:00Z",
+    "updatedAt": "2024-01-28T14:20:00Z"
+  }
+]

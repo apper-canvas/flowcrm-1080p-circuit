@@ -3,63 +3,48 @@ import { motion } from "framer-motion";
 import Button from "@/components/atoms/Button";
 import FormField from "@/components/molecules/FormField";
 import ApperIcon from "@/components/ApperIcon";
-import { companyService } from "@/services/api/companyService";
 
-const ContactForm = ({ contact, onSubmit, onCancel, isEditing = false }) => {
+const CompanyForm = ({ company, onSubmit, onCancel, isEditing = false }) => {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
+    industry: "",
+    website: "",
     phone: "",
-    company: "",
-    companyId: null,
-    notes: ""
+    email: "",
+    address: "",
+    description: ""
   });
-  const [companies, setCompanies] = useState([]);
   
-const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    loadCompanies();
-  }, []);
-
-  useEffect(() => {
-    if (contact) {
+    if (company) {
       setFormData({
-        name: contact.name || "",
-        email: contact.email || "",
-        phone: contact.phone || "",
-        company: contact.company || "",
-        companyId: contact.companyId || null,
-        notes: contact.notes || ""
+        name: company.name || "",
+        industry: company.industry || "",
+        website: company.website || "",
+        phone: company.phone || "",
+        email: company.email || "",
+        address: company.address || "",
+        description: company.description || ""
       });
     }
-  }, [contact]);
-
-  const loadCompanies = async () => {
-    try {
-      const data = await companyService.getAll();
-      setCompanies(data);
-    } catch (error) {
-      console.error("Failed to load companies:", error);
-    }
-  };
+  }, [company]);
 
   const validateForm = () => {
     const newErrors = {};
     
     if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
+      newErrors.name = "Company name is required";
     }
     
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Email is invalid";
     }
     
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone is required";
+    if (formData.website && !formData.website.match(/^https?:\/\/.+/)) {
+      newErrors.website = "Website must start with http:// or https://";
     }
     
     setErrors(newErrors);
@@ -107,11 +92,11 @@ const [errors, setErrors] = useState({});
       exit={{ opacity: 0, scale: 0.95 }}
       className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
     >
-      <div className="bg-white rounded-xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
         <div className="p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-gray-900">
-              {isEditing ? "Edit Contact" : "Add New Contact"}
+              {isEditing ? "Edit Company" : "Add New Company"}
             </h2>
             <button
               onClick={onCancel}
@@ -123,84 +108,76 @@ const [errors, setErrors] = useState({});
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <FormField
-              label="Full Name"
+              label="Company Name"
               name="name"
               value={formData.name}
               onChange={handleChange}
               error={errors.name}
               required
-              placeholder="Enter full name"
-            />
-
-            <FormField
-              label="Email Address"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              error={errors.email}
-              required
-              placeholder="Enter email address"
-            />
-
-            <FormField
-              label="Phone Number"
-              name="phone"
-              type="tel"
-              value={formData.phone}
-              onChange={handleChange}
-              error={errors.phone}
-              required
-              placeholder="Enter phone number"
-            />
-
-            <FormField
-              label="Company"
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
-              error={errors.company}
               placeholder="Enter company name"
-/>
+            />
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Company
-              </label>
-              <select
-                name="companyId"
-                value={formData.companyId || ""}
-                onChange={(e) => {
-                  const companyId = e.target.value ? parseInt(e.target.value) : null;
-                  const selectedCompany = companies.find(c => c.Id === companyId);
-                  setFormData(prev => ({
-                    ...prev,
-                    companyId: companyId,
-                    company: selectedCompany ? selectedCompany.name : ""
-                  }));
-                }}
-                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white"
-              >
-                <option value="">Select a company</option>
-                {companies.map(company => (
-                  <option key={company.Id} value={company.Id}>
-                    {company.name}
-                  </option>
-                ))}
-              </select>
+            <FormField
+              label="Industry"
+              name="industry"
+              value={formData.industry}
+              onChange={handleChange}
+              error={errors.industry}
+              placeholder="Enter industry"
+            />
+
+            <FormField
+              label="Website"
+              name="website"
+              type="url"
+              value={formData.website}
+              onChange={handleChange}
+              error={errors.website}
+              placeholder="https://example.com"
+            />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <FormField
+                label="Phone"
+                name="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handleChange}
+                error={errors.phone}
+                placeholder="Enter phone number"
+              />
+
+              <FormField
+                label="Email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                error={errors.email}
+                placeholder="Enter email address"
+              />
             </div>
 
+            <FormField
+              label="Address"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+              error={errors.address}
+              placeholder="Enter company address"
+            />
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Notes
+                Description
               </label>
               <textarea
-                name="notes"
-                value={formData.notes}
+                name="description"
+                value={formData.description}
                 onChange={handleChange}
-                rows={3}
+                rows={4}
                 className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white resize-none"
-                placeholder="Add any notes about this contact..."
+                placeholder="Enter company description..."
               />
             </div>
 
@@ -226,7 +203,7 @@ const [errors, setErrors] = useState({});
                 ) : (
                   <>
                     <ApperIcon name={isEditing ? "Save" : "Plus"} className="h-4 w-4 mr-2" />
-                    {isEditing ? "Update Contact" : "Add Contact"}
+                    {isEditing ? "Update Company" : "Add Company"}
                   </>
                 )}
               </Button>
@@ -238,4 +215,4 @@ const [errors, setErrors] = useState({});
   );
 };
 
-export default ContactForm;
+export default CompanyForm;
