@@ -1,19 +1,19 @@
+import "@/index.css";
 import React, { createContext, useEffect, useState } from "react";
-import { Route, Router, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
-import { store } from "@/store";
+import { useMobileMenu } from "@/hooks/useMobileMenu";
+import { store } from "@/store/index";
 import { clearUser, setUser } from "@/store/userSlice";
 import Login from "@/components/pages/Login";
-import Signup from "@/components/pages/Signup";
-import Callback from "@/components/pages/Callback";
-import ErrorPage from "@/components/pages/ErrorPage";
-import ResetPassword from "@/components/pages/ResetPassword";
-import PromptPassword from "@/components/pages/PromptPassword";
-import { useMobileMenu } from "@/hooks/useMobileMenu";
-import "@/index.css";
 import DealsPage from "@/components/pages/DealsPage";
+import PromptPassword from "@/components/pages/PromptPassword";
+import ErrorPage from "@/components/pages/ErrorPage";
+import Signup from "@/components/pages/Signup";
 import CompaniesPage from "@/components/pages/CompaniesPage";
+import Callback from "@/components/pages/Callback";
+import ResetPassword from "@/components/pages/ResetPassword";
 import ContactsPage from "@/components/pages/ContactsPage";
 import Sidebar from "@/components/organisms/Sidebar";
 
@@ -25,11 +25,7 @@ function AppContent() {
   const dispatch = useDispatch();
   const [isInitialized, setIsInitialized] = useState(false);
   const { isMobileMenuOpen, toggleMobileMenu, closeMobileMenu } = useMobileMenu();
-  
-  // Get authentication status with proper error handling
-  const userState = useSelector((state) => state.user);
-  const isAuthenticated = userState?.isAuthenticated || false;
-  
+
   // Initialize ApperUI once when the app loads
   useEffect(() => {
     const { ApperClient, ApperUI } = window.ApperSDK;
@@ -99,7 +95,7 @@ function AppContent() {
         console.error("Authentication failed:", error);
       }
     });
-  }, []);// No props and state should be bound
+  }, [navigate, dispatch]);
   
   // Authentication methods to share via context
   const authMethods = {
@@ -121,7 +117,7 @@ function AppContent() {
     return <div className="loading flex items-center justify-center p-6 h-full w-full"><svg className="animate-spin" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v4"></path><path d="m16.2 7.8 2.9-2.9"></path><path d="M18 12h4"></path><path d="m16.2 16.2 2.9 2.9"></path><path d="M12 18v4"></path><path d="m4.9 19.1 2.9-2.9"></path><path d="M2 12h4"></path><path d="m4.9 4.9 2.9 2.9"></path></svg></div>;
   }
 
-return (
+  return (
     <AuthContext.Provider value={authMethods}>
       <Routes>
         <Route path="/login" element={<Login />} />
@@ -149,21 +145,21 @@ return (
                   element={<DealsPage onMenuClick={toggleMobileMenu} />} 
                 />
               </Routes>
+              
+              <ToastContainer 
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                style={{ zIndex: 9999 }}
+              />
             </div>
-
-            <ToastContainer
-              position="top-right"
-              autoClose={3000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="light"
-              style={{ zIndex: 9999 }}
-            />
           </div>
         } />
       </Routes>
@@ -173,11 +169,11 @@ return (
 
 function App() {
   return (
-    <Provider store={store}>
-      <Router>
+    <BrowserRouter>
+      <Provider store={store}>
         <AppContent />
-      </Router>
-    </Provider>
+      </Provider>
+    </BrowserRouter>
   );
 }
 
