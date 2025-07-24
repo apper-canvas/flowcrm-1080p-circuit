@@ -45,10 +45,10 @@ const ContactsPage = ({ onMenuClick }) => {
       return;
     }
 
-    const filtered = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(searchValue.toLowerCase()) ||
-      contact.email.toLowerCase().includes(searchValue.toLowerCase()) ||
-      (contact.company && contact.company.toLowerCase().includes(searchValue.toLowerCase()))
+const filtered = contacts.filter(contact =>
+      contact.Name.toLowerCase().includes(searchValue.toLowerCase()) ||
+      contact.email_c.toLowerCase().includes(searchValue.toLowerCase()) ||
+      (contact.company_c && contact.company_c.toLowerCase().includes(searchValue.toLowerCase()))
     );
     setFilteredContacts(filtered);
   }, [contacts, searchValue]);

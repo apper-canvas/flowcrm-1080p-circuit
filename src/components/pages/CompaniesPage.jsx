@@ -28,10 +28,10 @@ const CompaniesPage = ({ onMenuClick }) => {
     if (searchTerm.trim() === "") {
       setFilteredCompanies(companies);
     } else {
-      const filtered = companies.filter(company =>
-        company.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        company.industry?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        company.email?.toLowerCase().includes(searchTerm.toLowerCase())
+const filtered = companies.filter(company =>
+        company.Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        company.industry_c?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        company.email_c?.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredCompanies(filtered);
     }

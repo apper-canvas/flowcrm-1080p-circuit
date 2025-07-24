@@ -30,33 +30,33 @@ const CompanyList = ({ companies, onCompanyClick, onEditCompany, onDeleteCompany
                     <div className="flex items-center mb-2">
                       <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-xl mr-4">
                         <span className="text-white font-semibold text-lg">
-                          {company.name.charAt(0).toUpperCase()}
+{company.Name.charAt(0).toUpperCase()}
                         </span>
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900 hover:text-primary-600 transition-colors duration-200">
-                          {company.name}
+                          {company.Name}
                         </h3>
-                        <p className="text-sm text-gray-500">{company.industry || "No industry"}</p>
+                        <p className="text-sm text-gray-500">{company.industry_c || "No industry"}</p>
                       </div>
                     </div>
                     
                     <div className="ml-16 space-y-1">
-                      <div className="flex items-center text-sm text-gray-600">
+<div className="flex items-center text-sm text-gray-600">
                         <ApperIcon name="Globe" className="h-4 w-4 mr-2 text-gray-400" />
-                        {company.website || "No website"}
+                        {company.website_c || "No website"}
                       </div>
                       <div className="flex items-center text-sm text-gray-600">
                         <ApperIcon name="Mail" className="h-4 w-4 mr-2 text-gray-400" />
-                        {company.email || "No email"}
+                        {company.email_c || "No email"}
                       </div>
                       <div className="flex items-center text-sm text-gray-600">
                         <ApperIcon name="Phone" className="h-4 w-4 mr-2 text-gray-400" />
-                        {company.phone || "No phone"}
+                        {company.phone_c || "No phone"}
                       </div>
                       <div className="flex items-center text-sm text-gray-500">
                         <ApperIcon name="Calendar" className="h-4 w-4 mr-2 text-gray-400" />
-                        Added {format(new Date(company.createdAt), "MMM d, yyyy")}
+                        Added {format(new Date(company.CreatedOn), "MMM d, yyyy")}
                       </div>
                     </div>
                   </div>
